@@ -40,7 +40,7 @@ h1{
     font-size: 7vmin;
     font-weight: bolder;
     font-family: Arial,sans-serif,Helvetica;
-
+    background-color: rgb(86, 78, 126);
 }
 
 .reset-container{
