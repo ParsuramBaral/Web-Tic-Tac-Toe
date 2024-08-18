@@ -8,7 +8,15 @@ body{
     background-color: rgb(96, 160, 146);
 }
 
-h1{
+#Welcome{
+    text-align: center;
+}
+
+#Winner{
+    text-align: center;
+}
+
+#draw{
     text-align: center;
 }
 
