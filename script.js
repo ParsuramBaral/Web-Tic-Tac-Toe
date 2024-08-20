@@ -35,12 +35,12 @@ const computerturn =() =>{
             draw.innerText = `Oops! The match was drawn`;
             disablebox();
         }
-    };
+    }
 };
 function clicker(){
     box.forEach((boxes) =>{
         boxes.addEventListener("click", () =>{
-            if(playerO){
+            if(playerO && boxes.textContent === ""){
                 boxes.innerText = "O";
                 playerO= false;
                 click_count +=1;
@@ -83,44 +83,40 @@ clicker();
 
 const defend = () => {
     let changes = false;
-    win_condition.forEach((conditions) => {
+    win_condition.some((conditions) => { 
         let [boxvalue1, boxvalue2, boxvalue3] = conditions.map(index => box[index].innerText);
-        if((boxvalue1 === "O" && boxvalue2 === "O" && boxvalue3 === "") ||
-        (boxvalue2 === "O" && boxvalue3 === "O" && boxvalue1 === "") || 
-        (boxvalue1 === "O" && boxvalue3 === "O" && boxvalue2 === "")){
-            if (boxvalue1 === "O" && boxvalue2 === "O" && boxvalue3 === ""){
-                box[conditions[2]].innerText = "X";
-                changes = true;
-            }
-            else if (boxvalue2 === "O" && boxvalue3 === "O" && boxvalue1 === ""){
-                box[conditions[0]].innerText = "X";
-                changes = true;
-            }
-            else if (boxvalue1 === "O" && boxvalue3 === "O" && boxvalue2 === ""){
-                box[conditions[1]].innerText = "X";
-                changes = true;
-            };
+
+        if (boxvalue1 === "O" && boxvalue2 === "O" && boxvalue3 === "") {
+            box[conditions[2]].innerText = "X";
+            changes = true;
+            return true; 
         }
-    })
+        if (boxvalue2 === "O" && boxvalue3 === "O" && boxvalue1 === "") {
+            box[conditions[0]].innerText = "X";
+            changes = true;
+            return true; 
+        }
+        if (boxvalue1 === "O" && boxvalue3 === "O" && boxvalue2 === "") {
+            box[conditions[1]].innerText = "X";
+            changes = true;
+            return true;
+        }
+    });
     return changes;
 }
 
-
 const winner_decider = () => {
-    win_condition.forEach((conditions) => {
+    win_condition.some((conditions) => {
         let [boxvalue1, boxvalue2, boxvalue3] = conditions.map(index => box[index].innerText);
-        if (boxvalue1 !=="" && boxvalue2 !=="" && boxvalue3 !=="") {
-            if (boxvalue1 === boxvalue2 && boxvalue2 === boxvalue3) {
-                if(boxvalue1 === "O") { 
-                    winner.innerText = "Congratulations Player has Won";
-                   } 
-                else{
-                    winner.innerText = "OPPS! Computer has Won";
-                    
-                }
-                disablebox();
-                return;
+
+        if (boxvalue1 !== "" && boxvalue1 === boxvalue2 && boxvalue2 === boxvalue3) {
+            if (boxvalue1 === "O") {
+                winner.innerText = "Congratulations! Player has Won";
+            } else {
+                winner.innerText = "Oops! Computer has Won";
             }
+            disablebox();
+            return true; 
         }
-    });    
+    });
 };
