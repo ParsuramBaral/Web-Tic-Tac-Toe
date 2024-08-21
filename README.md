@@ -33,7 +33,7 @@ To get started with the Tic Tac Toe game, follow these steps:
 1. **Clone the Repository**:
 
    ```bash
-   git clone https://github.com/ParsuramBaral/Web-Tic-Tac-Toe.git
+   git clone https://github.com/SubratZi/Web-Tic-Tac-Toe.git
    ```
 
 2. **Navigate to the Project Directory**:
@@ -77,7 +77,7 @@ To contribute:
 2. **Create a Branch**: Work on your changes in a separate branch.
 
    ```bash
-   git checkout -b feature/ParsuramBaral
+   git checkout -b feature/SubratZi
    ```
 
 3. **Commit Your Changes**: Write clear commit messages describing your changes.
